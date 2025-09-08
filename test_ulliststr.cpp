@@ -9,5 +9,18 @@
 
 int main(int argc, char* argv[])
 {
+  ULListStr dat;
 
+  dat.push_back("test");
+  std::cout << dat.get(0) << std::endl;
+  dat.pop_back();
+
+  dat.push_back("test");
+  
+  
+
+
+  
+  dat.show();
+  
 }
