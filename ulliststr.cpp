@@ -1,7 +1,6 @@
 #include <cstddef>
 #include <stdexcept>
 #include "ulliststr.h"
-#include <iostream>
 
 ULListStr::ULListStr()
 {
@@ -163,47 +162,52 @@ void ULListStr::push_front(const std::string&val) {
 }
 
 void ULListStr::pop_back() {
-  tail_->val[tail_->last-1] = "";
-  tail_->last -= 1;
+  if (tail_ != NULL) {
+    tail_->val[tail_->last-1] = "";
+    tail_->last -= 1;
 
-  if (tail_->last == tail_->first) {
+    if (tail_->last == tail_->first) {
 
-    if (tail_->prev == NULL) {
-      delete tail_;
-      tail_ = NULL;
-      head_ = NULL;
-    } else {
-      tail_ = tail_->prev;
-      delete tail_->next;
-      tail_->next = NULL;
+      if (tail_->prev == NULL) {
+        delete tail_;
+        tail_ = NULL;
+        head_ = NULL;
+      } else {
+        tail_ = tail_->prev;
+        delete tail_->next;
+        tail_->next = NULL;
+      }
+
     }
-
   }
+
 
   size_ -= 1;
 }
 
 void ULListStr::pop_front() {
-  head_->val[head_->first] = "";
-  head_->first += 1;
+  if (head_ != NULL) {
+    head_->val[head_->first] = "";
+    head_->first += 1;
 
-  if (head_->first == head_->last) {
-    
-    if (head_->next == NULL) {
-      delete head_;
-      head_ = NULL;
-      tail_ = NULL;
-    } else {
+    if (head_->first == head_->last) {
+      
+      if (head_->next == NULL) {
+        delete head_;
+        head_ = NULL;
+        tail_ = NULL;
+      } else {
 
-      head_ = head_->next;
-      delete head_->prev;
-      head_->prev = NULL;
+        head_ = head_->next;
+        delete head_->prev;
+        head_->prev = NULL;
+
+      }
 
     }
 
+    size_ -= 1;
   }
-
-  size_ -= 1;
 }
 
 std::string const & ULListStr::back() const {

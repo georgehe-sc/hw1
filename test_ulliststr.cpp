@@ -9,18 +9,38 @@
 
 int main(int argc, char* argv[])
 {
+
+  // test case 1: push 2, pop 1, get value at 0
+
   ULListStr dat;
 
   dat.push_back("test");
-  std::cout << dat.get(0) << std::endl;
+  dat.push_back("test 2");
   dat.pop_back();
 
-  dat.push_back("test");
-  
+  // expecting test
+  std::cout << dat.get(0) << std::endl;
+  dat.pop_back();
   
 
+  // test case 2: push back 1, push front 2, get value at 1 (expect first push front)
 
-  
-  dat.show();
+  ULListStr dat2;
+
+  dat2.push_back("Test");
+  dat2.push_front("Test1");
+  dat2.push_front("test2");
+
+  // expect Test1
+  std::cout << dat2.get(1) << std::endl;
+
+
+
+  // test case 3: pop from null list;
+
+  ULListStr dat3;
+  dat3.pop_front();
+
+  // expecting no error
   
 }
