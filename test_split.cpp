@@ -56,7 +56,9 @@ int main(int argc, char* argv[])
 {
 
 
-  Node* input = makeList({2,5,6,7,8,10,72,256,300,9009,1111});
+
+  // test case 1: one egative
+  Node* input = makeList({-1,0,1,2,3});
   Node* odd = nullptr;
   Node* even = nullptr;
 
@@ -86,13 +88,89 @@ int main(int argc, char* argv[])
 
   std::cout << "input list" << std::endl;
 
-
-  
   if (input == NULL) {
     std::cout << "yup" << std::endl;
   }
 
   delete_list(even);
   delete_list(odd);
+
+  // test case 2: double inputs
+
+  Node* input1 = makeList({0,0,1,1,2,2,3,3,4,4});
+  Node* odd1 = nullptr;
+  Node* even1 = nullptr;
+
+  split(input1, odd1, even1);
+
+  Node* looper1 = odd1;
+
+  do {
+    std::cout << looper1->value << std::endl;
+    looper1 = looper1->next;
+  } while (looper1->next != NULL);
+
+  std::cout << looper1->value << "\n" << std::endl;
+
+  looper1 = even1;
+
+  std::cout << "evens: " << std::endl;
+
+  do {
+    std::cout << looper1->value << std::endl;
+    looper1 = looper1->next;
+  } while (looper1->next != NULL);
+
+  std::cout << looper1->value << "\n" << std::endl;
+
+  looper1 = input1;
+
+  std::cout << "input list" << std::endl;
+
+  if (input1 == NULL) {
+    std::cout << "yup" << std::endl;
+  }
+
+  delete_list(even1);
+  delete_list(odd1);
+  
+  // test case 3: all negative
+
+  Node* input2 = makeList({-6,-5,-4,-3,-2,-1});
+  Node* odd2 = nullptr;
+  Node* even2 = nullptr;
+
+  split(input2, odd2, even2);
+
+  Node* looper2 = odd2;
+
+  do {
+    std::cout << looper2->value << std::endl;
+    looper2 = looper2->next;
+  } while (looper2->next != NULL);
+
+  std::cout << looper2->value << "\n" << std::endl;
+
+  looper2 = even2;
+
+  std::cout << "evens: " << std::endl;
+
+  do {
+    std::cout << looper2->value << std::endl;
+    looper2 = looper2->next;
+  } while (looper2->next != NULL);
+
+  std::cout << looper2->value << "\n" << std::endl;
+
+  looper2 = input2;
+
+  std::cout << "input list" << std::endl;
+
+  if (input2 == NULL) {
+    std::cout << "yup" << std::endl;
+  }
+
+  delete_list(even2);
+  delete_list(odd2);
 
 }
